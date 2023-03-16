@@ -11,3 +11,6 @@
 
 - When the near earth object is clicked on, it should display its next 5 approaches and previous 5 approaches to earth
 
+## Creating the App:
+
+- I'm going to use Postman to see what information I get back with my API key

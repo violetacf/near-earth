@@ -1,9 +1,10 @@
 import './App.css';
+import DatesEntry from '../DatesEntry/DatesEntry';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">Hello</header>
+      <DatesEntry />
     </div>
   );
 }
