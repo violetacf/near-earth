@@ -1,5 +1,6 @@
-import meteor from './../../Images/meteor.png';
 import './ObjectsDisplay.css';
+import meteor from './../../Images/meteor.png';
+import dangerous from './../../Images/save-me.png';
 
 export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
   //   function onClick(element) {
@@ -23,49 +24,53 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
     return (
       <div>
         <p>There are {newArray.length} elements found:</p>
-        <div>
-          <p>
-            {newArray.map((element) => (
-              <div>
-                <img
-                  className="meteor-image"
-                  alt="meteor to click on"
-                  src={meteor}
-                  // onClick={onClick}
-                ></img>
-                <h1>Name: {element.name}</h1>
-                <p>
-                  {' '}
-                  Maximum diameter:{' '}
-                  {
-                    element.estimated_diameter.kilometers.estimated_diameter_max
-                  }{' '}
-                  km
-                </p>
-                <p>
-                  {' '}
-                  This element is{' '}
-                  <b>
-                    {element.is_potentially_hazardous_asteroid
-                      ? 'dangerous'
-                      : 'not dangerous'}
-                  </b>
-                  .
-                </p>
-                <p>
-                  {' '}
-                  This element is{' '}
-                  <b>
-                    {element.is_sentry_object
-                      ? 'sentry object'
-                      : 'not a sentry object'}
-                  </b>
-                  .
-                </p>
-              </div>
-            ))}
-          </p>
-        </div>
+        {newArray.map((element) => (
+          <div key={element.id}>
+            <img
+              className="meteor-image"
+              alt="Meteor to click on"
+              src={meteor}
+              // onClick={onClick}
+            ></img>
+            <h1>Name: {element.name}</h1>
+            <p>
+              {' '}
+              Minimum diameter:{' '}
+              {element.estimated_diameter.meters.estimated_diameter_min} m
+            </p>
+            <p>
+              Maximum diameter:{' '}
+              {element.estimated_diameter.meters.estimated_diameter_max} m
+            </p>
+            <p>
+              {' '}
+              This element is{' '}
+              {element.is_potentially_hazardous_asteroid ? (
+                <div>
+                  <b>dangerous</b>{' '}
+                  <img
+                    className="dangerous-image"
+                    alt="Earth holding a save me sign"
+                    src={dangerous}
+                  ></img>
+                </div>
+              ) : (
+                'not dangerous'
+              )}
+              .
+            </p>
+            <p>
+              {' '}
+              This element is{' '}
+              <b>
+                {element.is_sentry_object
+                  ? 'sentry object'
+                  : 'not a sentry object'}
+              </b>
+              .
+            </p>
+          </div>
+        ))}
       </div>
     );
   }

@@ -1,3 +1,7 @@
 .meteor-image {
   max-width: 50pt;
 }
+
+.dangerous-image {
+  max-width: 30pt;
+}
