@@ -14,3 +14,7 @@
 ## Creating the App:
 
 - I'm going to use Postman to see what information I get back with my API key
+
+- I wrote a fetch request in the DatesEntry Component, and I am console.logging the data that I receive
+
+- When looking at data by doing request in postman it only allows the time frame to be a maximum of 7 days. - Need to work on this

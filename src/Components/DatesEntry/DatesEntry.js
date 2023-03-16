@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import ObjectsDisplay from '../ObjectsDisplay/ObjectsDisplay';
 
 const apiKey = 'caRwB9KLY9MaGfOSR7VW7Cs3iH66rpq1bFqvXioX';
 
 export default function DatesEntry() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [numberOfElements, setNumberOfElements] = useState(0);
+  const [objectsReceived, setObjectsReceived] = useState();
 
   async function getData(startDate, endDate) {
     const response = await fetch(
@@ -14,12 +17,14 @@ export default function DatesEntry() {
     console.log('this is the data', data);
     //   console.log('this is the response', response);
     //   return data;
+    setNumberOfElements(data.element_count);
+    setObjectsReceived(data.near_earth_objects);
+    console.log('number of elements', data.element_count);
   }
 
   function onClick() {
     console.log('start date', startDate);
     console.log('end date', endDate);
-    
     getData(startDate, endDate);
   }
   return (
@@ -41,6 +46,8 @@ export default function DatesEntry() {
           type="date"
           name="party"
           min={startDate}
+          //   max={new Date(startDate).toISOString().slice(0, 10)}
+          // Need to change the max here to be a week from startDate
           max="2023-02-23"
           onChange={(event) => setEndDate(event.target.value)}
           required
@@ -49,6 +56,10 @@ export default function DatesEntry() {
       <p>
         <button onClick={onClick}>Submit</button>
       </p>
+      <ObjectsDisplay
+        objectsReceived={objectsReceived}
+        numberOfElements={numberOfElements}
+      />
     </div>
   );
 }
