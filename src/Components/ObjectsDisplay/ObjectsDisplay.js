@@ -47,7 +47,7 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
               This element is{' '}
               {element.is_potentially_hazardous_asteroid ? (
                 <>
-                  <b>dangerous.</b>{' '}
+                  <b>dangerous!!</b>{' '}
                   <img
                     className="safe-dangerous-image"
                     alt="Earth holding a save me sign"
@@ -56,7 +56,7 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
                 </>
               ) : (
                 <>
-                  <b>not dangerous!!</b>{' '}
+                  <b>not dangerous.</b>{' '}
                   <img
                     className="safe-dangerous-image"
                     alt="Earth is safe"

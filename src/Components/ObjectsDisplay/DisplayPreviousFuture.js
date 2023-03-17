@@ -9,10 +9,14 @@ export default function PreviousFuture({ id }) {
       `http://api.nasa.gov/neo/rest/v1/neo/${id}?api_key=${apiKey}`
     );
     const data = await response.json();
-    console.log('this is the data for singular element', data);
-    //   console.log('this is the response', response);
-    //   return data;
-    // console.log('number of elements', data.element_count);
+    console.log(
+      'this is the data for singular element',
+      data.close_approach_data
+    );
+    data.close_approach_data.forEach((element, index) => {
+      console.log(element.close_approach_date); // dates when the object has been approching Earth
+      console.log(index); // Index in the array of each approach - to find the index of the one that meets the dates requirement and then find 5 previous and 5 future
+    });
   }
   function onClick() {
     getSingularElement();
