@@ -27,15 +27,21 @@ export default function DatesEntry() {
     console.log('end date', endDate);
     getData(startDate, endDate);
   }
+
+  function maxEndDate() {
+    if (startDate === '') return '';
+    console.log('start date2', startDate);
+    var date = new Date(startDate);
+    date.setDate(date.getDate() + 7);
+    console.log('end date2', date.toISOString().split('T')[0]);
+    return date.toISOString().split('T')[0];
+  }
   return (
     <div>
       <label>
         Start date:
         <input
           type="date"
-          name="party"
-          min="2017-04-01"
-          max="2023-02-23"
           onChange={(event) => setStartDate(event.target.value)}
           required
         />
@@ -44,12 +50,12 @@ export default function DatesEntry() {
         End date:
         <input
           type="date"
-          name="party"
           min={startDate}
           //   max={new Date(startDate).toISOString().slice(0, 10)}
           // Need to change the max here to be a week from startDate
-          max="2023-02-23"
+          max={maxEndDate()}
           onChange={(event) => setEndDate(event.target.value)}
+          // if endDate is less than startDate move start Date 7 days before
           required
         />
       </label>

@@ -1,14 +1,10 @@
 import './ObjectsDisplay.css';
-import meteor from './../../Images/meteor.png';
+// import meteor from './../../Images/meteor.png';
 import dangerous from './../../Images/save-me.png';
+import safe from './../../Images/safe.png';
+import PreviousFuture from './DisplayPreviousFuture';
 
 export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
-  //   function onClick(element) {
-  //     alert(
-  //       'Maximun diameter in km:',
-  //       element.estimated_diameter.kilometers.estimated_diameter_max
-  //     );
-  //   }
   if (numberOfElements === 0) {
     return (
       <div>
@@ -25,49 +21,58 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
       <div>
         <p>There are {newArray.length} elements found:</p>
         {newArray.map((element) => (
-          <div key={element.id}>
-            <img
+          <div key={element.id} className="element-container">
+            {/* <img
               className="meteor-image"
               alt="Meteor to click on"
               src={meteor}
               // onClick={onClick}
-            ></img>
+            ></img> */}
+            <PreviousFuture id={element.id} />
             <h1>Name: {element.name}</h1>
             <p>
               {' '}
-              Minimum diameter:{' '}
-              {element.estimated_diameter.meters.estimated_diameter_min} m
-            </p>
-            <p>
-              Maximum diameter:{' '}
-              {element.estimated_diameter.meters.estimated_diameter_max} m
+              Its diameter is between{' '}
+              {element.estimated_diameter.meters.estimated_diameter_min.toFixed(
+                2
+              )}{' '}
+              and{' '}
+              {element.estimated_diameter.meters.estimated_diameter_max.toFixed(
+                2
+              )}{' '}
+              m.
             </p>
             <p>
               {' '}
               This element is{' '}
               {element.is_potentially_hazardous_asteroid ? (
-                <div>
-                  <b>dangerous</b>{' '}
+                <>
+                  <b>dangerous.</b>{' '}
                   <img
-                    className="dangerous-image"
+                    className="safe-dangerous-image"
                     alt="Earth holding a save me sign"
                     src={dangerous}
                   ></img>
-                </div>
+                </>
               ) : (
-                'not dangerous'
+                <>
+                  <b>not dangerous!!</b>{' '}
+                  <img
+                    className="safe-dangerous-image"
+                    alt="Earth is safe"
+                    src={safe}
+                  ></img>
+                </>
               )}
-              .
             </p>
             <p>
               {' '}
               This element is{' '}
               <b>
                 {element.is_sentry_object
-                  ? 'sentry object'
-                  : 'not a sentry object'}
+                  ? 'sentry object.'
+                  : 'not a sentry object.'}
               </b>
-              .
             </p>
           </div>
         ))}

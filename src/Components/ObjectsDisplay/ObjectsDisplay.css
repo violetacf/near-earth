@@ -2,6 +2,10 @@
   max-width: 50pt;
 }
 
-.dangerous-image {
+.safe-dangerous-image {
   max-width: 30pt;
+}
+
+.element-container {
+  border-color: red;
 }
