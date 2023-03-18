@@ -14,12 +14,10 @@ export default function DatesEntry() {
       `https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=${apiKey}`
     );
     const data = await response.json();
-    console.log('this is the data', data);
-    //   console.log('this is the response', response);
-    //   return data;
+    // console.log('this is the data', data);
     setNumberOfElements(data.element_count);
     setObjectsReceived(data.near_earth_objects);
-    console.log('number of elements', data.element_count);
+    // console.log('number of elements', data.element_count);
   }
 
   function onClick() {
@@ -30,12 +28,13 @@ export default function DatesEntry() {
 
   function maxEndDate() {
     if (startDate === '') return '';
-    console.log('start date2', startDate);
+    console.log('start date entered', startDate);
     var date = new Date(startDate);
     date.setDate(date.getDate() + 7);
-    console.log('end date2', date.toISOString().split('T')[0]);
+    console.log('max end date', date.toISOString().split('T')[0]);
     return date.toISOString().split('T')[0];
   }
+
   return (
     <div>
       <label>
@@ -51,11 +50,10 @@ export default function DatesEntry() {
         <input
           type="date"
           min={startDate}
-          //   max={new Date(startDate).toISOString().slice(0, 10)}
-          // Need to change the max here to be a week from startDate
           max={maxEndDate()}
           onChange={(event) => setEndDate(event.target.value)}
-          // if endDate is less than startDate move start Date 7 days before
+          // TODO: if endDate is less than startDate move start Date 7 days before
+          // See if I can add a calendar like google flights with range
           required
         />
       </label>
@@ -63,6 +61,8 @@ export default function DatesEntry() {
         <button onClick={onClick}>Submit</button>
       </p>
       <ObjectsDisplay
+        startDate={startDate}
+        endDate={endDate}
         objectsReceived={objectsReceived}
         numberOfElements={numberOfElements}
       />
