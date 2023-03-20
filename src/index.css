@@ -25,19 +25,18 @@ body {
 /* body {
   overflow: hidden;
 } */
-section {
-  position: relative;
-  /* position: absolute; Original: The one that doesn't let me use the calendar */
-  /* position: static; */
+/* section {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  /* background: url('./Images/bg0.jpg'); */
+  background: url('./Images/bg0.jpg');
   background-position-x: center;
   background-size: cover;
   animation: animateBg 50s linear infinite;
-}
+} */
+
 @keyframes animateBg {
   0%,
   100% {
@@ -49,7 +48,7 @@ section {
 }
 span {
   /* position: absolute; */
-  position: relative;
+  position: fixed;
   top: 50%;
   left: 50%;
   width: 4px;
@@ -63,7 +62,7 @@ span {
 span::before {
   content: '';
   /* position: absolute; */
-  position: relative;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 300px;

@@ -1,3 +1,20 @@
-.dates-entry-container{
-    
+.dates-entry-container {
+}
+
+#submit-dates-button {
+  background-color: var(--white);
+  color: var(--black);
+  cursor: pointer;
+  padding: 5pt;
+  border-radius: 4pt;
+  font-size: 20pt;
+  margin: auto;
+}
+
+#submit-dates-button:hover {
+  background-color: var(--main-light-color);
+}
+
+#telescope {
+  max-width: 30pt;
 }

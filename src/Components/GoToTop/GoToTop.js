@@ -1,4 +1,5 @@
 import './GoToTop.css';
+import rocket from './../../Images/rocket.png';
 
 export default function GoToTop() {
   window.onscroll = function () {
@@ -19,7 +20,11 @@ export default function GoToTop() {
   return (
     <a href="#top" name="targetDiv">
       <button id="button-up" title="Go to top button">
-        Top
+        <img
+          id="rocket"
+          src={rocket}
+          alt="rocket to click to go to top of page"
+        ></img>
       </button>
     </a>
   );

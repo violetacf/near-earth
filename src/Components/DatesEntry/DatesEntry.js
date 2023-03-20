@@ -1,6 +1,7 @@
 import './DatesEntry.css';
 import { useState } from 'react';
 import ObjectsDisplay from '../ObjectsDisplay/ObjectsDisplay';
+import telescope from './../../Images/telescope.png';
 
 const apiKey = 'caRwB9KLY9MaGfOSR7VW7Cs3iH66rpq1bFqvXioX';
 
@@ -37,30 +38,35 @@ export default function DatesEntry() {
   }
 
   return (
-    <div className="dates-entry-container">
-      <label>
-        Start date:
-        <input
-          type="date"
-          onChange={(event) => setStartDate(event.target.value)}
-          required
-        />
-      </label>
-      <label>
-        End date:
-        <input
-          type="date"
-          min={startDate}
-          max={maxEndDate()}
-          onChange={(event) => setEndDate(event.target.value)}
-          // TODO: if endDate is less than startDate move start Date 7 days before
-          // See if I can add a calendar like google flights with range
-          required
-        />
-      </label>
-      <p>
-        <button onClick={onClick}>Submit</button>
-      </p>
+    <div className="dates-submit-container">
+      <div className="dates-entry-container">
+        <label className="date-label">
+          Start date:
+          <input
+            className="date-input"
+            type="date"
+            onChange={(event) => setStartDate(event.target.value)}
+            required
+          />
+        </label>
+        <label className="date-label">
+          End date:
+          <input
+            className="date-input"
+            type="date"
+            min={startDate}
+            max={maxEndDate()}
+            onChange={(event) => setEndDate(event.target.value)}
+            // TODO: if endDate is less than startDate move start Date 7 days before
+            // See if I can add a calendar like google flights with range
+            required
+          />
+        </label>
+      </div>
+      <button id="submit-dates-button" onClick={onClick}>
+        <img id="telescope" src={telescope} alt="magnifying glass"></img>
+        Find flying objects
+      </button>
       <ObjectsDisplay
         startDate={startDate}
         endDate={endDate}
