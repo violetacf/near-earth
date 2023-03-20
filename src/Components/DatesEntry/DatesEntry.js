@@ -1,3 +1,4 @@
+import './DatesEntry.css';
 import { useState } from 'react';
 import ObjectsDisplay from '../ObjectsDisplay/ObjectsDisplay';
 
@@ -36,7 +37,7 @@ export default function DatesEntry() {
   }
 
   return (
-    <div>
+    <div className="dates-entry-container">
       <label>
         Start date:
         <input

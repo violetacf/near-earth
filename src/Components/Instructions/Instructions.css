@@ -1,0 +1,35 @@
+@import url('https://fonts.cdnfonts.com/css/gravidaz');
+
+.title-container {
+  font-family: 'Gravidaz', sans-serif;
+  font-size: 60pt;
+}
+
+.instructions-container {
+  margin: 50pt;
+}
+
+.instructions-text-container {
+  margin-top: 20pt;
+  font-size: 20pt;
+}
+
+.asterisk-container {
+  font-size: 10pt;
+}
+
+@media screen and (max-width: 992px) {
+  .title-container {
+    font-size: 30pt;
+  }
+  .instructions-container {
+    margin: 8pt;
+  }
+  .instructions-text-container {
+    margin-top: 8pt;
+    font-size: 11pt;
+  }
+  .asterisk-container {
+    font-size: 7pt;
+  }
+}

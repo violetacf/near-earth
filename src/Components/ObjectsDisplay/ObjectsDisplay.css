@@ -11,7 +11,7 @@
   transition: 0.3s;
   border-radius: 90px; /* 5px rounded corners */
   padding: 20pt;
-  background-color: green;
+  background-color: var(--secondary-dark-color);
   margin: 20pt;
   max-width: 200pt;
   min-width: none;
@@ -19,7 +19,7 @@
 
 /* On mouse-over, add a deeper shadow */
 .element-container:hover {
-  box-shadow: 1px 4px 8px 12px #4526a0;
+  box-shadow: 1px 4px 8px 12px (--secondary-dark-color);
 }
 
 /* Add some padding inside the card container */
