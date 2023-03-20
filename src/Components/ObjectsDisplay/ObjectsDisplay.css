@@ -8,18 +8,18 @@
 
 .element-container {
   box-shadow: 1px 4px 8px 12px white;
-  transition: 0.3s;
-  border-radius: 90px; /* 5px rounded corners */
-  padding: 20pt;
+  /* transition: 0.3s; */
+  border-radius: 10pt; /* 5px rounded corners */
+  padding: 15pt;
   background-color: var(--secondary-dark-color);
   margin: 20pt;
-  max-width: 200pt;
-  min-width: none;
+  width: 300pt;
+  min-width: 200pt;
 }
 
 /* On mouse-over, add a deeper shadow */
 .element-container:hover {
-  box-shadow: 1px 4px 8px 12px (--secondary-dark-color);
+  box-shadow: 1px 4px 8px 12px var(--main-light-color);
 }
 
 /* Add some padding inside the card container */
@@ -28,6 +28,7 @@
 }
 
 .elements-container {
+  margin: 20pt;
   display: flex;
   flex-wrap: wrap;
 }

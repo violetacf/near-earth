@@ -19,10 +19,11 @@ export default function PreviousFuture({ id, startDate, endDate }) {
       `http://api.nasa.gov/neo/rest/v1/neo/${id}?api_key=${apiKey}`
     );
     const data = await response.json();
+    approachesArray = [];
     data.close_approach_data.forEach((element) => {
       approachesArray.push(element.close_approach_date);
     });
-    // console.log('approaches Array', approachesArray); // dates when the object has approached Earth
+    console.log('approaches Array', approachesArray[0]); // dates when the object has approached Earth
 
     setUrl(data.nasa_jpl_url);
   }
@@ -46,7 +47,10 @@ export default function PreviousFuture({ id, startDate, endDate }) {
   function getMatch(array1, array2) {
     for (let i = 0; i < array1.length; i++) {
       for (let e = 0; e < array2.length; e++) {
-        if (array1[i] === array2[e]) match = array1[i];
+        if (array1[i] === array2[e]) {
+          match = array1[i];
+          break;
+        }
         //   setMatch(array1[i]);
       }
     }
@@ -75,8 +79,8 @@ export default function PreviousFuture({ id, startDate, endDate }) {
   //   };
 
   // On click image:
-  function onClick() {
-    getElementById();
+  async function onClick() {
+    await getElementById();
     dateRange(startDate, endDate, 1);
     getPreviousAndAfter(5, 5);
   }
