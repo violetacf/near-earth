@@ -10,32 +10,24 @@ let nextFive = [];
 
 export default function PreviousFuture({ id, startDate, endDate }) {
   const [url, setUrl] = useState('');
-  async function getSingularElement() {
+  //   const [match, setMatch] = useState('');
+  let match = '';
+
+  // Get element by id by clicking picture
+  async function getElementById() {
     const response = await fetch(
       `http://api.nasa.gov/neo/rest/v1/neo/${id}?api_key=${apiKey}`
     );
     const data = await response.json();
-    // console.log(
-    //   'this is the data for singular element approach data',
-    //   data.close_approach_data
-    // );
-    // console.log(
-    //   'this is the data for singular element url nasa more info',
-    //   data.nasa_jpl_url
-    // );
-    data.close_approach_data.forEach((element, index) => {
+    data.close_approach_data.forEach((element) => {
       approachesArray.push(element.close_approach_date);
-      console.log('approaches Array', approachesArray); // dates when the object has approached Earth
-      console.log(index); // I don't need the index, is the same as the index of the date - Index in the array of each approach - to find the index of the one that meets the dates requirement and then find 5 previous and 5 future
     });
+    // console.log('approaches Array', approachesArray); // dates when the object has approached Earth
+
     setUrl(data.nasa_jpl_url);
   }
 
-  function onClick() {
-    getSingularElement();
-    dateRange(startDate, endDate, 1);
-  }
-
+  // Dates entered range:
   function dateRange(startDate, endDate, steps) {
     const dateArray = [];
     let currentDate = new Date(startDate);
@@ -45,36 +37,34 @@ export default function PreviousFuture({ id, startDate, endDate }) {
       currentDate.setUTCDate(currentDate.getUTCDate() + steps);
     }
     console.log('this is the dates range', dateArray);
-    // TODO: I need this array to compare the dates received for each element, to see the five previous and the five times after it went around the Earth
     return dateArray;
   }
 
   let enteredDatesArray = dateRange(startDate, endDate, 1);
 
-  function getMatch(a, b) {
-    var matches = [];
-
-    for (let i = 0; i < a.length; i++) {
-      for (let e = 0; e < b.length; e++) {
-        if (a[i] === b[e]) matches.push(a[i]);
+  // Find the date that matches the entered dates with the approaches dates to find previous 5 and 5 after:
+  function getMatch(array1, array2) {
+    for (let i = 0; i < array1.length; i++) {
+      for (let e = 0; e < array2.length; e++) {
+        if (array1[i] === array2[e]) match = array1[i];
+        //   setMatch(array1[i]);
       }
     }
-    console.log('matches', matches);
-    // TODO: here make sure there is only one match, otherwise won't be accurate:
-    // matches[0];
-    // TODO: This is a horrible "solution"
+    console.log('match', match, 'id', id);
+    return match;
+  }
 
+  function getPreviousAndAfter(previous, after) {
     for (let o = 0; o < approachesArray.length; o++) {
-      if (approachesArray[o] === matches[0]) {
+      if (approachesArray[o] === match) {
         // Position in the array, to bring back the previous 5 and the next five
-        console.log(o);
-        previousFive = approachesArray.slice(o - 5, o);
-        nextFive = approachesArray.slice(o + 1, o + 6);
+        // console.log(o);
+        previousFive = approachesArray.slice(o - previous, o);
+        nextFive = approachesArray.slice(o + 1, o + after + 1);
       }
     }
-    console.log('previous', previousFive);
-    console.log('next', nextFive);
-    return matches;
+    console.log('previous', previousFive, 'id', id);
+    console.log('next', nextFive, 'id', id);
   }
 
   getMatch(enteredDatesArray, approachesArray);
@@ -83,6 +73,13 @@ export default function PreviousFuture({ id, startDate, endDate }) {
   //   const openInNewTab = (url) => {
   //     window.open(url, '_blank', 'noreferrer');
   //   };
+
+  // On click image:
+  function onClick() {
+    getElementById();
+    dateRange(startDate, endDate, 1);
+    getPreviousAndAfter(5, 5);
+  }
 
   return (
     <div>
