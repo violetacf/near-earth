@@ -1,8 +1,6 @@
 import './ObjectsDisplay.css';
-// import meteor from './../../Images/meteor.png';
-import dangerous from './../../Images/save-me.png';
-import safe from './../../Images/safe.png';
 import PreviousFuture from './DisplayPreviousFuture';
+import { Link } from 'react-router-dom';
 
 export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
   if (numberOfElements === 0) {
@@ -21,53 +19,60 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
         <p className="text-intro-click-more">
           Found {newArray.length} elements:
         </p>
+
         <div className="elements-container">
           {newArray.map((element) => (
-            <div key={element.id} className="element-container">
-              <div>
-                <PreviousFuture
-                  id={element.id}
-                  dangerous={element.is_potentially_hazardous_asteroid}
-                />
+            <Link
+              to={{
+                pathname: `/learn-more-element/${element.id}`,
+              }}
+            >
+              <div key={element.id} className="element-container">
+                <div>
+                  <PreviousFuture
+                    id={element.id}
+                    dangerous={element.is_potentially_hazardous_asteroid}
+                  />
+                </div>
+                <div className="info-container">
+                  <h1>{element.name}</h1>
+                  <p>
+                    {' '}
+                    Its diameter is between{' '}
+                    {element.estimated_diameter.meters.estimated_diameter_min.toFixed(
+                      2
+                    )}{' '}
+                    and{' '}
+                    {element.estimated_diameter.meters.estimated_diameter_max.toFixed(
+                      2
+                    )}{' '}
+                    m.
+                  </p>
+                  <p>
+                    {' '}
+                    This element is{' '}
+                    {element.is_potentially_hazardous_asteroid ? (
+                      <>
+                        <b>dangerous!!</b>
+                      </>
+                    ) : (
+                      <>
+                        <b>not dangerous.</b>
+                      </>
+                    )}
+                  </p>
+                  <p>
+                    {' '}
+                    This element is{' '}
+                    <b>
+                      {element.is_sentry_object
+                        ? 'sentry object.'
+                        : 'not a sentry object.'}
+                    </b>
+                  </p>
+                </div>
               </div>
-              <div className="info-container">
-                <h1>Name: {element.name}</h1>
-                <p>
-                  {' '}
-                  Its diameter is between{' '}
-                  {element.estimated_diameter.meters.estimated_diameter_min.toFixed(
-                    2
-                  )}{' '}
-                  and{' '}
-                  {element.estimated_diameter.meters.estimated_diameter_max.toFixed(
-                    2
-                  )}{' '}
-                  m.
-                </p>
-                <p>
-                  {' '}
-                  This element is{' '}
-                  {element.is_potentially_hazardous_asteroid ? (
-                    <>
-                      <b>dangerous!!</b>
-                    </>
-                  ) : (
-                    <>
-                      <b>not dangerous.</b>
-                    </>
-                  )}
-                </p>
-                <p>
-                  {' '}
-                  This element is{' '}
-                  <b>
-                    {element.is_sentry_object
-                      ? 'sentry object.'
-                      : 'not a sentry object.'}
-                  </b>
-                </p>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

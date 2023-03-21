@@ -6,8 +6,10 @@ import telescope from './../../Images/telescope.png';
 const apiKey = 'caRwB9KLY9MaGfOSR7VW7Cs3iH66rpq1bFqvXioX';
 
 export default function DatesEntry() {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [startDate, setStartDate] = useState(
+    new Date().toISOString().split('T')[0]
+  );
+  const [endDate, setEndDate] = useState(maxEndDate());
   const [numberOfElements, setNumberOfElements] = useState(0);
   const [objectsReceived, setObjectsReceived] = useState();
 
@@ -42,6 +44,7 @@ export default function DatesEntry() {
           <label className="date-label">
             Enter start date:
             <input
+              value={startDate}
               className="date-input"
               type="date"
               onChange={(event) => setStartDate(event.target.value)}
@@ -53,6 +56,7 @@ export default function DatesEntry() {
           <label className="date-label">
             and end date:
             <input
+              value={endDate}
               className="date-input"
               type="date"
               min={startDate}
