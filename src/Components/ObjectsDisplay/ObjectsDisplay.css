@@ -9,7 +9,6 @@
 
 .element-container {
   box-shadow: 1px 4px 8px 8px rgba(255, 255, 255, 0.332);
-  /* transition: 0.3s; */
   border-radius: 10pt; /* 5px rounded corners */
   padding: 15pt;
   background-color: var(--secondary-dark-color);
@@ -18,13 +17,11 @@
   min-width: 200pt;
 }
 
-/* On mouse-over, add a deeper shadow */
 .element-container:hover {
   box-shadow: 1px 4px 8px 5px var(--main-light-color);
   opacity: 0.8;
 }
 
-/* Add some padding inside the card container */
 .info-container {
   padding: 2px 16px;
   color: var(--white);

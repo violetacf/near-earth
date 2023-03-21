@@ -17,6 +17,12 @@
   border-radius: 4pt;
 }
 
+/* 
+See how to make the cursor pointer for the little calendar
+.input-box:hover {
+  cursor: pointer;
+} */
+
 #submit-dates-button {
   background-color: var(--white);
   color: var(--black);

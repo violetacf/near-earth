@@ -43,29 +43,33 @@ export default function DatesEntry() {
         <div>
           <label className="date-label">
             Enter start date:
-            <input
-              value={startDate}
-              className="date-input"
-              type="date"
-              onChange={(event) => setStartDate(event.target.value)}
-              required
-            />
+            <div className="input-box">
+              <input
+                value={startDate}
+                className="date-input"
+                type="date"
+                onChange={(event) => setStartDate(event.target.value)}
+                required
+              />
+            </div>
           </label>
         </div>
         <div>
           <label className="date-label">
             and end date:
-            <input
-              value={endDate}
-              className="date-input"
-              type="date"
-              min={startDate}
-              max={maxEndDate()}
-              onChange={(event) => setEndDate(event.target.value)}
-              // TODO: if endDate is less than startDate move start Date 7 days before
-              // See if I can add a calendar like google flights with range
-              required
-            />
+            <div className="input-box">
+              <input
+                value={endDate}
+                className="date-input"
+                type="date"
+                min={startDate}
+                max={maxEndDate()}
+                onChange={(event) => setEndDate(event.target.value)}
+                // TODO: if endDate is less than startDate move start Date 7 days before
+                // See if I can add a calendar like google flights with range
+                required
+              />
+            </div>
           </label>
         </div>
       </div>

@@ -1,8 +1,7 @@
 import './ObjectsDisplay.css';
-import { Link } from 'react-router-dom';
 import dangerousPic from './../../Images/save-me.png';
 import safePic from './../../Images/safe.png';
-export default function PreviousFuture({ id, dangerous }) {
+export default function DangerOrSafe({ dangerous }) {
   return (
     <div>
       {dangerous ? (

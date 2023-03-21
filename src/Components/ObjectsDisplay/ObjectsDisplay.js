@@ -1,6 +1,6 @@
 import './ObjectsDisplay.css';
-import PreviousFuture from './DisplayPreviousFuture';
 import { Link } from 'react-router-dom';
+import DangerOrSafe from './DangerOrSafe';
 
 export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
   if (numberOfElements === 0) {
@@ -29,8 +29,7 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
             >
               <div key={element.id} className="element-container">
                 <div>
-                  <PreviousFuture
-                    id={element.id}
+                  <DangerOrSafe
                     dangerous={element.is_potentially_hazardous_asteroid}
                   />
                 </div>
