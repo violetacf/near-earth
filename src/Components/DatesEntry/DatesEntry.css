@@ -1,5 +1,6 @@
-.dates-entry-container {
+@import url('https://fonts.cdnfonts.com/css/gravidaz');
 
+.dates-entry-container {
 }
 
 #submit-dates-button {
@@ -10,6 +11,7 @@
   border-radius: 4pt;
   font-size: 20pt;
   margin: auto;
+  font-family: 'Gravidaz', sans-serif;
 }
 
 #submit-dates-button:hover {

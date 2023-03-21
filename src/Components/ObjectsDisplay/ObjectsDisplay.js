@@ -12,11 +12,10 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
       </div>
     );
   } else {
-    console.log('objects received', objectsReceived);
     const array = Object.values(objectsReceived);
-    console.log('objects received array', array);
+    // console.log('objects received array', array);
     const newArray = array.flat();
-    console.log('newArr', newArray);
+    // console.log('newArr', newArray);
     return (
       <div>
         <p>Found {newArray.length} elements:</p>

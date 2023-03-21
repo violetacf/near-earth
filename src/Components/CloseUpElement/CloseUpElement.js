@@ -1,6 +1,7 @@
 // import './MyPortfolio.css';
 import { Link, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import meteor from './../../Images/meteor.png';
 const apiKey = 'caRwB9KLY9MaGfOSR7VW7Cs3iH66rpq1bFqvXioX';
 
 let approachesArray = [];
@@ -10,6 +11,7 @@ let futureFive = [];
 export default function CloseUpElement() {
   const { id } = useParams();
   const [url, setUrl] = useState('');
+  const [name, setName] = useState('');
   const getElementById = async function () {
     const response = await fetch(
       `http://api.nasa.gov/neo/rest/v1/neo/${id}?api_key=${apiKey}`
@@ -22,6 +24,7 @@ export default function CloseUpElement() {
     console.log('data', data);
     // console.log('approaches Array', approachesArray[0]); // dates when the object has approached Earth
     setUrl(data.nasa_jpl_url);
+    setName(data.name);
   };
 
   const getFutureClosestToToday = function (approachesArray) {
@@ -69,20 +72,43 @@ export default function CloseUpElement() {
     console.log('useffect', id);
   }, []);
 
+  function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
   //   const { previousFive } = useLocation().state;
   console.log('props params', id);
   // console.log('state', previousFive);
   return (
     <div className="close-up-container">
       <div className="close-up">
-        <p>{id}</p>
-        <Link to={'/'}>
-          <button>Go back to explore the Universe</button>
-        </Link>
-        <button role="link" onClick={() => openInNewTab(url)}>
-          Read more about this element in the NASA website
-        </button>
-        {/* <button onClick={onClick()}>See more</button> */}
+        <div className="buttons-container">
+          <Link to={'/'}>
+            <button>Go back to explore the Universe</button>
+          </Link>
+          <button role="link" onClick={() => openInNewTab(url)}>
+            Read more about this element in the NASA website
+          </button>
+        </div>
+        <h1>{name}</h1>
+        <img src={meteor} alt="meteor"></img>
+        <p>
+          {' '}
+          Next times this object will come close to Earth:
+          {futureFive.map((item, index) => (
+            <p key={index}>{formatDate(item)}</p>
+          ))}
+        </p>
+        <p>
+          Previous times this object had been close to Earth:
+          {previousFive.map((item, index) => (
+            <p key={index}>{formatDate(item)}</p>
+          ))}
+        </p>
       </div>
     </div>
   );
