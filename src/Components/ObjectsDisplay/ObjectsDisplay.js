@@ -4,12 +4,7 @@ import dangerous from './../../Images/save-me.png';
 import safe from './../../Images/safe.png';
 import PreviousFuture from './DisplayPreviousFuture';
 
-export default function ObjectsDisplay({
-  objectsReceived,
-  numberOfElements,
-  endDate,
-  startDate,
-}) {
+export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
   if (numberOfElements === 0) {
     return (
       <div>
@@ -29,11 +24,7 @@ export default function ObjectsDisplay({
           {newArray.map((element) => (
             <div key={element.id} className="element-container">
               <div>
-                <PreviousFuture
-                  id={element.id}
-                  startDate={startDate}
-                  endDate={endDate}
-                />
+                <PreviousFuture id={element.id} />
               </div>
               <div className="info-container">
                 <h1>Name: {element.name}</h1>

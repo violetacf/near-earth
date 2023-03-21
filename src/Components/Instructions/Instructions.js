@@ -4,14 +4,14 @@ export default function Instructions() {
   return (
     <div className="instructions-container">
       <h1 className="title-container" id="title-container">
-        Welcome to "Is the end near?"
+       Is the end near?
       </h1>
       <p className="instructions-text-container">
         Ignore the dramatic title, we already know that the end is near!
         <br />
-        "Is the end Near?" will allow you to enter two dates below, and the
+        Please, enter two dates below, and the
         floating bodies around the Earth that were close to colliding with us
-        between those dates will be displayed (!).
+        between those dates will be displayed.
         <br />
         We hope you enjoy your stay and that you live each day like it is the
         last!

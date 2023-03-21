@@ -6,12 +6,10 @@ const apiKey = 'caRwB9KLY9MaGfOSR7VW7Cs3iH66rpq1bFqvXioX';
 
 let approachesArray = [];
 let previousFive = [];
-let nextFive = [];
+let futureFive = [];
 
-export default function PreviousFuture({ id, startDate, endDate }) {
+export default function PreviousFuture({ id }) {
   const [url, setUrl] = useState('');
-  //   const [match, setMatch] = useState('');
-  let match = '';
 
   // Get element by id by clicking picture
   async function getElementById() {
@@ -21,57 +19,52 @@ export default function PreviousFuture({ id, startDate, endDate }) {
     const data = await response.json();
     approachesArray = [];
     data.close_approach_data.forEach((element) => {
-      approachesArray.push(element.close_approach_date);
+      approachesArray.push(Date.parse(element.close_approach_date));
     });
-    console.log('approaches Array', approachesArray[0]); // dates when the object has approached Earth
-
+    // console.log('approaches Array', approachesArray[0]); // dates when the object has approached Earth
     setUrl(data.nasa_jpl_url);
   }
 
-  // Dates entered range:
-  function dateRange(startDate, endDate, steps) {
-    const dateArray = [];
-    let currentDate = new Date(startDate);
-
-    while (currentDate <= new Date(endDate)) {
-      dateArray.push(new Date(currentDate).toISOString().split('T')[0]);
-      currentDate.setUTCDate(currentDate.getUTCDate() + steps);
-    }
-    console.log('this is the dates range', dateArray);
-    return dateArray;
-  }
-
-  let enteredDatesArray = dateRange(startDate, endDate, 1);
-
   // Find the date that matches the entered dates with the approaches dates to find previous 5 and 5 after:
-  function getMatch(array1, array2) {
-    for (let i = 0; i < array1.length; i++) {
-      for (let e = 0; e < array2.length; e++) {
-        if (array1[i] === array2[e]) {
-          match = array1[i];
-          break;
-        }
-        //   setMatch(array1[i]);
-      }
-    }
-    console.log('match', match, 'id', id);
-    return match;
+  function getFutureClosestToToday(approachesArray) {
+    let today = new Date();
+    // console.log('today', today);
+    // console.log(
+    //   'approaches[i]',
+    //   approachesArray.map((date) => {
+    //     return date;
+    //   })
+    // );
+
+    let futureIndex = approachesArray.findIndex(function (date) {
+      return date > today;
+    });
+    console.log('index array', futureIndex);
+    return futureIndex;
   }
 
-  function getPreviousAndAfter(previous, after) {
-    for (let o = 0; o < approachesArray.length; o++) {
-      if (approachesArray[o] === match) {
-        // Position in the array, to bring back the previous 5 and the next five
-        // console.log(o);
-        previousFive = approachesArray.slice(o - previous, o);
-        nextFive = approachesArray.slice(o + 1, o + after + 1);
-      }
+  function getPreviousAndFuture(index) {
+    if (index - 5 < 0) {
+      previousFive = approachesArray.slice(0, index);
+    } else {
+      previousFive = approachesArray.slice(index - 5, index);
     }
+    if (index + 5 > approachesArray.length) {
+      futureFive = approachesArray.slice(index, approachesArray.length);
+    } else {
+      futureFive = approachesArray.slice(index, index + 5);
+    }
+
+    // for (let i = 0; i < approachesArray.length; i++) {
+    //   if (approachesArray[i] === closestDate) {
+    //     // Position in the array, to bring back the previous 5 and the next five
+    //     // console.log(o);
+    //     previousFive = approachesArray.slice(i - previous, i);
+    //   }
+    // }
     console.log('previous', previousFive, 'id', id);
-    console.log('next', nextFive, 'id', id);
+    console.log('next', futureFive, 'id', id);
   }
-
-  getMatch(enteredDatesArray, approachesArray);
 
   // This is to open new NASA tab for more info about specific object. It only works after image has been clicked:
   //   const openInNewTab = (url) => {
@@ -81,8 +74,8 @@ export default function PreviousFuture({ id, startDate, endDate }) {
   // On click image:
   async function onClick() {
     await getElementById();
-    dateRange(startDate, endDate, 1);
-    getPreviousAndAfter(5, 5);
+    let index = getFutureClosestToToday(approachesArray);
+    getPreviousAndFuture(index);
   }
 
   return (
