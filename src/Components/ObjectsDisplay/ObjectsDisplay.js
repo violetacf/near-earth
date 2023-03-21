@@ -22,12 +22,13 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
 
         <div className="elements-container">
           {newArray.map((element) => (
-            <Link
-              to={{
-                pathname: `/learn-more-element/${element.id}`,
-              }}
-            >
-              <div key={element.id} className="element-container">
+            <div key={element.id} className="element-container">
+              <Link
+                key={element.id}
+                to={{
+                  pathname: `/learn-more-element/${element.id}`,
+                }}
+              >
                 <div>
                   <DangerOrSafe
                     dangerous={element.is_potentially_hazardous_asteroid}
@@ -70,8 +71,8 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
                     </b>
                   </p>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       </div>

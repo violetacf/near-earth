@@ -20,7 +20,7 @@
   flex-direction: column;
 }
 
-.info-container {
+.detailed-info-container {
   margin: 20pt;
   display: flex;
   flex-direction: row;
@@ -67,7 +67,7 @@
     width: 80%;
     margin: 10pt;
   }
-  .info-container {
+  .detailed-info-container {
     margin: 10pt;
     flex-direction: column;
     gap: 20pt;

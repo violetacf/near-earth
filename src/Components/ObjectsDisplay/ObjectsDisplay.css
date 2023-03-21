@@ -8,13 +8,14 @@
 }
 
 .element-container {
+  display: flex;
+  flex-direction: column;
   box-shadow: 1px 4px 8px 8px rgba(255, 255, 255, 0.332);
   border-radius: 10pt; /* 5px rounded corners */
   padding: 15pt;
   background-color: var(--secondary-dark-color);
-  margin: 20pt;
-  width: 300pt;
-  min-width: 200pt;
+  margin: 10pt;
+  width: 30%;
 }
 
 .element-container:hover {
@@ -31,4 +32,11 @@
   margin: 20pt;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 992px) {
+  .element-container {
+    width: 90%;
+  }
 }

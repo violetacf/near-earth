@@ -84,45 +84,47 @@ export default function CloseUpElement() {
   console.log('props params', id);
   // console.log('state', previousFive);
   return (
-    <div className="close-up-container">
-      <div className="buttons-container">
-        <div>
-          <button className="back-more">
-            <Link to={'/'}>Go back to explore the Universe</Link>
-          </button>
-        </div>
-        <div>
-          <button
-            className="back-more"
-            role="link"
-            onClick={() => openInNewTab(url)}
-          >
-            Read more in the NASA website
-          </button>
-        </div>
-      </div>
-      <div className="info-container">
-        <div className="title-image-container">
-          <h1>Object Name: {name}</h1>
-          <img src={meteor} alt="meteor"></img>
-        </div>
-        <div className="dates-container">
-          <div className="future-dates-container">
-            <p>
-              {' '}
-              Next times this object will come close to Earth:
-              {futureFive.map((item, index) => (
-                <p key={index}>{formatDate(item)}</p>
-              ))}
-            </p>
+    <div>
+      <div className="close-up-container">
+        <div className="buttons-container">
+          <div>
+            <button className="back-more">
+              <Link to={'/'}>Go back to explore the Universe</Link>
+            </button>
           </div>
-          <div className="past-dates-container">
-            <p>
-              Previous times this object had been close to Earth:
-              {previousFive.map((item, index) => (
-                <p key={index}>{formatDate(item)}</p>
-              ))}
-            </p>
+          <div>
+            <button
+              className="back-more"
+              role="link"
+              onClick={() => openInNewTab(url)}
+            >
+              Read more in the NASA website
+            </button>
+          </div>
+        </div>
+        <div className="detailed-info-container">
+          <div className="title-image-container">
+            <h1>Object Name: {name}</h1>
+            <img src={meteor} alt="meteor"></img>
+          </div>
+          <div className="dates-container">
+            <div className="future-dates-container">
+              <p>
+                {' '}
+                Next times this object will come close to Earth:
+                {futureFive.map((item, index) => (
+                  <p key={index}>{formatDate(item)}</p>
+                ))}
+              </p>
+            </div>
+            <div className="past-dates-container">
+              <p>
+                Previous times this object had been close to Earth:
+                {previousFive.map((item, index) => (
+                  <p key={index}>{formatDate(item)}</p>
+                ))}
+              </p>
+            </div>
           </div>
         </div>
       </div>
