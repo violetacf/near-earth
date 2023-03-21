@@ -44,3 +44,18 @@ See how to make the cursor pointer for the little calendar
   vertical-align: middle;
   margin-right: 4pt;
 }
+
+@media screen and (max-width: 992px) {
+  #submit-dates-button {
+    font-size: 15pt;
+    margin-top: 15pt;
+  }
+  .date-label {
+    font-size: 15pt;
+  }
+
+  .date-input {
+    height: 25pt;
+    font-size: 15pt;
+  }
+}
