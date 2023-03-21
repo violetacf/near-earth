@@ -1,7 +1,9 @@
 import './CloseUpElements.css';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import meteor from './../../Images/meteor.png';
+import dangerousPic from './../../Images/save-me.png';
+import safePic from './../../Images/safe.png';
 const apiKey = 'caRwB9KLY9MaGfOSR7VW7Cs3iH66rpq1bFqvXioX';
 
 let approachesArray = [];
@@ -10,8 +12,16 @@ let futureFive = [];
 
 export default function CloseUpElement() {
   const { id } = useParams();
-  const [url, setUrl] = useState('');
-  const [name, setName] = useState('');
+  const [info, setInfo] = useState({
+    name: '',
+    url: '',
+    diameterMin: '',
+    diameterMax: '',
+    dangerous: false,
+    sentry: false,
+    firstObvs: '',
+    lastObvs: '',
+  });
   const getElementById = async function () {
     const response = await fetch(
       `http://api.nasa.gov/neo/rest/v1/neo/${id}?api_key=${apiKey}`
@@ -22,9 +32,17 @@ export default function CloseUpElement() {
       approachesArray.push(Date.parse(element.close_approach_date));
     });
     console.log('data', data);
-    // console.log('approaches Array', approachesArray[0]); // dates when the object has approached Earth
-    setUrl(data.nasa_jpl_url);
-    setName(data.name);
+    setInfo({
+      ...info,
+      name: data.name,
+      url: data.nasa_jpl_url,
+      diameterMin: data.estimated_diameter.meters.estimated_diameter_min,
+      diameterMax: data.estimated_diameter.meters.estimated_diameter_max,
+      dangerous: data.is_potentially_hazardous_asteroid,
+      sentry: data.is_sentry_object,
+      firstObvs: data.orbital_data.first_observation_date,
+      lastObvs: data.orbital_data.last_observation_date,
+    });
   };
 
   const getFutureClosestToToday = function (approachesArray) {
@@ -47,7 +65,6 @@ export default function CloseUpElement() {
     } else {
       futureFive = approachesArray.slice(index, index + 5);
     }
-
     console.log('previous', previousFive, 'id', id);
     console.log('next', futureFive, 'id', id);
   };
@@ -56,12 +73,6 @@ export default function CloseUpElement() {
     window.open(url, '_blank', 'noreferrer');
   };
 
-  // On click image:
-  // async function onClick() {
-  //   await getElementById();
-  //   let index = getFutureClosestToToday(approachesArray);
-  //   getPreviousAndFuture(index);
-  // }
   useEffect(() => {
     async function getData() {
       await getElementById();
@@ -80,9 +91,6 @@ export default function CloseUpElement() {
     return `${year}-${month}-${day}`;
   }
 
-  //   const { previousFive } = useLocation().state;
-  console.log('props params', id);
-  // console.log('state', previousFive);
   return (
     <div>
       <div className="close-up-container">
@@ -96,7 +104,7 @@ export default function CloseUpElement() {
             <button
               className="back-more"
               role="link"
-              onClick={() => openInNewTab(url)}
+              onClick={() => openInNewTab(info.url)}
             >
               Read more in the NASA website
             </button>
@@ -104,7 +112,7 @@ export default function CloseUpElement() {
         </div>
         <div className="detailed-info-container">
           <div className="title-image-container">
-            <h1>Object Name: {name}</h1>
+            <h1>Object Name: {info.name}</h1>
             <img src={meteor} alt="meteor"></img>
           </div>
           <div className="dates-container">
@@ -127,6 +135,41 @@ export default function CloseUpElement() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="extra-info-container">
+        <p>
+          Diameter between: {info.diameterMin} and {info.diameterMax} m.
+        </p>
+        <p>First time it was seen: {info.firstObvs}</p>
+        <p>Last time it was seen: {info.lastObvs}</p>
+        {info.dangerous ? (
+          <>
+            <img
+              className="safe-dangerous-image"
+              alt="Earth holding a save me sign"
+              src={dangerousPic}
+            ></img>
+            <p>This element is dangerous.</p>
+          </>
+        ) : (
+          <>
+            <img
+              className="safe-dangerous-image"
+              alt="Earth is safe"
+              src={safePic}
+            ></img>
+            <p>This element is safe.</p>
+          </>
+        )}
+        {info.sentry ? (
+          <>
+            <p>This element is a sentry object.</p>
+          </>
+        ) : (
+          <>
+            <p>This element is not a sentry object.</p>
+          </>
+        )}
       </div>
     </div>
   );
