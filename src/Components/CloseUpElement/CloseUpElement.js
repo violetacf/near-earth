@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import meteor from './../../Images/meteor.png';
 import dangerousPic from './../../Images/save-me.png';
 import safePic from './../../Images/safe.png';
-const apiKey = 'caRwB9KLY9MaGfOSR7VW7Cs3iH66rpq1bFqvXioX';
+const apiKey = 'k4vS6xdND0EMCJtWR1o1rY6LcyyV4j90mLHDkfKp';
+// const apiKey = process.env.REACT_APP_API_KEY;
 
 let approachesArray = [];
 let previousFive = [];
@@ -109,67 +110,68 @@ export default function CloseUpElement() {
               Read more in the NASA website
             </button>
           </div>
-        </div>
-        <div className="detailed-info-container">
-          <div className="title-image-container">
-            <h1>Object Name: {info.name}</h1>
-            <img src={meteor} alt="meteor"></img>
-          </div>
-          <div className="dates-container">
-            <div className="future-dates-container">
-              <p>
-                {' '}
-                Next times this object will come close to Earth:
-                {futureFive.map((item, index) => (
-                  <p key={index}>{formatDate(item)}</p>
-                ))}
-              </p>
+
+          <div className="detailed-info-container">
+            <div className="title-image-container">
+              <h1>Object Name: {info.name}</h1>
+              <img src={meteor} alt="meteor"></img>
             </div>
-            <div className="past-dates-container">
-              <p>
-                Previous times this object had been close to Earth:
-                {previousFive.map((item, index) => (
-                  <p key={index}>{formatDate(item)}</p>
-                ))}
-              </p>
+            <div className="dates-container">
+              <div className="future-dates-container">
+                <p>
+                  {' '}
+                  Next times this object will come close to Earth:
+                  {futureFive.map((item, index) => (
+                    <p key={index}>{formatDate(item)}</p>
+                  ))}
+                </p>
+              </div>
+              <div className="past-dates-container">
+                <p>
+                  Previous times this object had been close to Earth:
+                  {previousFive.map((item, index) => (
+                    <p key={index}>{formatDate(item)}</p>
+                  ))}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="extra-info-container">
-        <p>
-          Diameter between: {info.diameterMin} and {info.diameterMax} m.
-        </p>
-        <p>First time it was seen: {info.firstObvs}</p>
-        <p>Last time it was seen: {info.lastObvs}</p>
-        {info.dangerous ? (
-          <>
-            <img
-              className="safe-dangerous-image"
-              alt="Earth holding a save me sign"
-              src={dangerousPic}
-            ></img>
-            <p>This element is dangerous.</p>
-          </>
-        ) : (
-          <>
-            <img
-              className="safe-dangerous-image"
-              alt="Earth is safe"
-              src={safePic}
-            ></img>
-            <p>This element is safe.</p>
-          </>
-        )}
-        {info.sentry ? (
-          <>
-            <p>This element is a sentry object.</p>
-          </>
-        ) : (
-          <>
-            <p>This element is not a sentry object.</p>
-          </>
-        )}
+        <div className="extra-info-container">
+          <p>
+            Diameter between: {info.diameterMin} and {info.diameterMax} m.
+          </p>
+          <p>First time it was seen: {info.firstObvs}</p>
+          <p>Last time it was seen: {info.lastObvs}</p>
+          {info.dangerous ? (
+            <>
+              <img
+                className="safe-dangerous-image"
+                alt="Earth holding a save me sign"
+                src={dangerousPic}
+              ></img>
+              <p>This element is dangerous.</p>
+            </>
+          ) : (
+            <>
+              <img
+                className="safe-dangerous-image"
+                alt="Earth is safe"
+                src={safePic}
+              ></img>
+              <p>This element is safe.</p>
+            </>
+          )}
+          {info.sentry ? (
+            <>
+              <p>This element is a sentry object.</p>
+            </>
+          ) : (
+            <>
+              <p>This element is not a sentry object.</p>
+            </>
+          )}
+        </div>{' '}
       </div>
     </div>
   );

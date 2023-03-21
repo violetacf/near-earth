@@ -45,7 +45,7 @@
 
 .future-dates-container {
   box-shadow: 1px 4px 8px 8px rgba(255, 255, 255, 0.332);
-  border-radius: 10pt; /* 5px rounded corners */
+  border-radius: 10pt;
   padding: 15pt;
   background-color: var(--secondary-dark-color);
   width: 100%;
@@ -54,11 +54,27 @@
 
 .past-dates-container {
   box-shadow: 1px 4px 8px 8px rgba(255, 255, 255, 0.332);
-  border-radius: 10pt; /* 5px rounded corners */
+  border-radius: 10pt;
   padding: 15pt;
   background-color: var(--secondary-dark-color);
   width: 100%;
   font-size: 20pt;
+}
+
+.extra-info-container {
+  box-shadow: 1px 4px 8px 8px rgba(255, 255, 255, 0.332);
+  border-radius: 10pt;
+  padding: 15pt;
+  background-color: var(--secondary-dark-color);
+  width: 90%;
+  font-size: 20pt;
+  align-self: center;
+}
+
+.close-up-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 @media screen and (max-width: 992px) {

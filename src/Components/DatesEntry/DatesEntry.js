@@ -3,7 +3,8 @@ import { useState } from 'react';
 import ObjectsDisplay from '../ObjectsDisplay/ObjectsDisplay';
 import telescope from './../../Images/telescope.png';
 
-const apiKey = 'caRwB9KLY9MaGfOSR7VW7Cs3iH66rpq1bFqvXioX';
+const apiKey = 'k4vS6xdND0EMCJtWR1o1rY6LcyyV4j90mLHDkfKp';
+// const apiKey = process.env.REACT_APP_API_KEY;
 
 export default function DatesEntry() {
   const [startDate, setStartDate] = useState(
@@ -18,16 +19,18 @@ export default function DatesEntry() {
       `https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=${apiKey}`
     );
     const data = await response.json();
+    console.log('data', data);
     setNumberOfElements(data.element_count);
     setObjectsReceived(data.near_earth_objects);
+    console.log('numberOfElements', numberOfElements);
   }
 
   function onClick() {
-    // console.log('start date', startDate);
-    // console.log('end date', endDate);
-    if (startDate !== '' && endDate !== '') {
-      getData(startDate, endDate);
-    }
+    console.log('start date', startDate);
+    console.log('end date', endDate);
+    // if (startDate !== '' && endDate !== '') {
+    getData(startDate, endDate);
+    // }
   }
 
   function maxEndDate() {
@@ -45,7 +48,7 @@ export default function DatesEntry() {
             Enter start date:
             <div className="input-box">
               <input
-                value={startDate}
+                // value={startDate}
                 className="date-input"
                 type="date"
                 onChange={(event) => setStartDate(event.target.value)}
@@ -59,7 +62,7 @@ export default function DatesEntry() {
             and end date:
             <div className="input-box">
               <input
-                value={endDate}
+                // value={endDate}
                 className="date-input"
                 type="date"
                 min={startDate}
