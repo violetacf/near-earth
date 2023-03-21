@@ -38,28 +38,32 @@ export default function DatesEntry() {
   return (
     <div className="dates-submit-container">
       <div className="dates-entry-container">
-        <label className="date-label">
-          Start date:
-          <input
-            className="date-input"
-            type="date"
-            onChange={(event) => setStartDate(event.target.value)}
-            required
-          />
-        </label>
-        <label className="date-label">
-          End date:
-          <input
-            className="date-input"
-            type="date"
-            min={startDate}
-            max={maxEndDate()}
-            onChange={(event) => setEndDate(event.target.value)}
-            // TODO: if endDate is less than startDate move start Date 7 days before
-            // See if I can add a calendar like google flights with range
-            required
-          />
-        </label>
+        <div>
+          <label className="date-label">
+            Enter start date:
+            <input
+              className="date-input"
+              type="date"
+              onChange={(event) => setStartDate(event.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <div>
+          <label className="date-label">
+            and end date:
+            <input
+              className="date-input"
+              type="date"
+              min={startDate}
+              max={maxEndDate()}
+              onChange={(event) => setEndDate(event.target.value)}
+              // TODO: if endDate is less than startDate move start Date 7 days before
+              // See if I can add a calendar like google flights with range
+              required
+            />
+          </label>
+        </div>
       </div>
       <button id="submit-dates-button" onClick={onClick}>
         <img id="telescope" src={telescope} alt="magnifying glass"></img>

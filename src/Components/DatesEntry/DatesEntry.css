@@ -1,6 +1,20 @@
 @import url('https://fonts.cdnfonts.com/css/gravidaz');
 
 .dates-entry-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10pt;
+}
+
+.date-label {
+  font-size: 20pt;
+}
+
+.date-input {
+  height: 30pt;
+  width: auto;
+  font-size: 30pt;
+  border-radius: 4pt;
 }
 
 #submit-dates-button {
@@ -10,8 +24,9 @@
   padding: 5pt;
   border-radius: 4pt;
   font-size: 20pt;
-  margin: auto;
   font-family: 'Gravidaz', sans-serif;
+  margin-top: 20pt;
+  vertical-align: middle;
 }
 
 #submit-dates-button:hover {
@@ -20,4 +35,6 @@
 
 #telescope {
   max-width: 30pt;
+  vertical-align: middle;
+  margin-right: 4pt;
 }
