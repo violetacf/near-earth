@@ -7,8 +7,8 @@ import PreviousFuture from './DisplayPreviousFuture';
 export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
   if (numberOfElements === 0) {
     return (
-      <div>
-        <p>Here we will display the objects, click on them for more info</p>
+      <div className="text-intro-click-more">
+        <p>Here we will display the objects, click on them for more info.</p>
       </div>
     );
   } else {
@@ -18,12 +18,17 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
     // console.log('newArr', newArray);
     return (
       <div>
-        <p>Found {newArray.length} elements:</p>
+        <p className="text-intro-click-more">
+          Found {newArray.length} elements:
+        </p>
         <div className="elements-container">
           {newArray.map((element) => (
             <div key={element.id} className="element-container">
               <div>
-                <PreviousFuture id={element.id} />
+                <PreviousFuture
+                  id={element.id}
+                  dangerous={element.is_potentially_hazardous_asteroid}
+                />
               </div>
               <div className="info-container">
                 <h1>Name: {element.name}</h1>
@@ -44,21 +49,11 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
                   This element is{' '}
                   {element.is_potentially_hazardous_asteroid ? (
                     <>
-                      <b>dangerous!!</b>{' '}
-                      <img
-                        className="safe-dangerous-image"
-                        alt="Earth holding a save me sign"
-                        src={dangerous}
-                      ></img>
+                      <b>dangerous!!</b>
                     </>
                   ) : (
                     <>
-                      <b>not dangerous.</b>{' '}
-                      <img
-                        className="safe-dangerous-image"
-                        alt="Earth is safe"
-                        src={safe}
-                      ></img>
+                      <b>not dangerous.</b>
                     </>
                   )}
                 </p>

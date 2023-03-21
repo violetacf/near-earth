@@ -1,9 +1,10 @@
-.meteor-image {
-  max-width: 50pt;
+.text-intro-click-more {
+  font-size: 20pt;
+  margin-top: 20pt;
 }
 
 .safe-dangerous-image {
-  max-width: 30pt;
+  max-width: 50pt;
 }
 
 .element-container {

@@ -1,8 +1,8 @@
-import meteor from './../../Images/meteor.png';
 import './ObjectsDisplay.css';
 import { Link } from 'react-router-dom';
-
-export default function PreviousFuture({ id }) {
+import dangerousPic from './../../Images/save-me.png';
+import safePic from './../../Images/safe.png';
+export default function PreviousFuture({ id, dangerous }) {
   return (
     <div>
       <Link
@@ -10,11 +10,23 @@ export default function PreviousFuture({ id }) {
           pathname: `/learn-more-element/${id}`,
         }}
       >
-        <img
-          className="meteor-image"
-          alt="Meteor to click on"
-          src={meteor}
-        ></img>
+        {dangerous ? (
+          <>
+            <img
+              className="safe-dangerous-image"
+              alt="Earth holding a save me sign"
+              src={dangerousPic}
+            ></img>
+          </>
+        ) : (
+          <>
+            <img
+              className="safe-dangerous-image"
+              alt="Earth is safe"
+              src={safePic}
+            ></img>
+          </>
+        )}
       </Link>
       <p>Click on the image to learn more about this element</p>
     </div>
