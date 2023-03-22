@@ -53,4 +53,7 @@
   .created-container p {
     font-size: 9pt;
   }
+  .stars {
+    display: none;
+  }
 }
