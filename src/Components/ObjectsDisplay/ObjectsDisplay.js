@@ -1,6 +1,7 @@
 import './ObjectsDisplay.css';
 import { Link } from 'react-router-dom';
 import DangerOrSafe from './DangerOrSafe';
+import telescopeSearch from './../../Images/telescope-search.png';
 
 export default function ObjectsDisplay({
   loading,
@@ -12,7 +13,17 @@ export default function ObjectsDisplay({
       <div className="text-intro-click-more">
         <p>Here we will display the objects, click on them for more info.</p>
         {loading === true ? (
-          <p className="loading-msg">Grabbing the telescope, please wait...</p>
+          // See how to update loading message between searches:
+          <>
+            <img
+              className="telescope-search"
+              src={telescopeSearch}
+              alt="telescope"
+            ></img>
+            <p className="loading-msg">
+              Grabbing the telescope, please wait...
+            </p>
+          </>
         ) : (
           <></>
         )}
