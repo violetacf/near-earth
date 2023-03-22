@@ -32,7 +32,7 @@ export default function CloseUpElement() {
     data.close_approach_data.forEach((element) => {
       approachesArray.push(Date.parse(element.close_approach_date));
     });
-    console.log('data', data);
+    // console.log('data', data);
     setInfo({
       ...info,
       name: data.name,
@@ -51,7 +51,7 @@ export default function CloseUpElement() {
     let futureIndex = approachesArray.findIndex(function (date) {
       return date > today;
     });
-    console.log('index array', futureIndex);
+    // console.log('index array', futureIndex);
     return futureIndex;
   };
 
@@ -66,8 +66,8 @@ export default function CloseUpElement() {
     } else {
       futureFive = approachesArray.slice(index, index + 5);
     }
-    console.log('previous', previousFive, 'id', id);
-    console.log('next', futureFive, 'id', id);
+    // console.log('previous', previousFive, 'id', id);
+    // console.log('next', futureFive, 'id', id);
   };
 
   const openInNewTab = (url) => {
@@ -81,7 +81,7 @@ export default function CloseUpElement() {
       getPreviousAndFuture(index);
     }
     getData();
-    console.log('useffect', id);
+    // console.log('useffect', id);
   }, []);
 
   function formatDate(timestamp) {

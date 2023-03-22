@@ -19,16 +19,15 @@ export default function DatesEntry() {
       `https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=${apiKey}`
     );
     const data = await response.json();
-    console.log('data', data);
+    // console.log('data', data);
     setNumberOfElements(data.element_count);
     setObjectsReceived(data.near_earth_objects);
-    console.log('numberOfElements', numberOfElements);
     setLoading(false);
   }
 
   function onClick() {
-    console.log('start date', startDate);
-    console.log('end date', endDate);
+    // console.log('start date', startDate);
+    // console.log('end date', endDate);
     if (startDate !== '' && endDate !== '') {
       getData(startDate, endDate);
       setLoading(true);
