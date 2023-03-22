@@ -9,7 +9,7 @@ export default function ObjectsDisplay({
   objectsReceived,
   numberOfElements,
 }) {
-  if (numberOfElements === 0) {
+  if (numberOfElements === 0 || loading === true) {
     return (
       <div className="text-intro-click-more">
         {loading === true ? (

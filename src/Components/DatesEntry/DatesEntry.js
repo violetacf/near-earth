@@ -27,8 +27,8 @@ export default function DatesEntry() {
 
   function performSearch() {
     if (startDate !== '' && endDate !== '') {
-      getData(startDate, endDate);
       setLoading(true);
+      getData(startDate, endDate);
     } else {
       alert('Dates are invalid');
     }
