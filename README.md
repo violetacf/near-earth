@@ -1,3 +1,17 @@
+# How to run the app in you local machine
+
+- You'll need an API key:
+  Documentation is here: https://api.nasa.gov/ and you can get an API key from that page.
+
+- Add the key as REACT_APP_API_KEY='addYourKeyHere' in a .env file
+
+- npm i
+
+- npm start
+
+- Or you can enjoy the deployed app here:
+  https://is-the-end-near.onrender.com/
+
 # Fourth Floor Challenge
 
 - First I created a new repository and then I created a React App (which is the framework I am confident with).
@@ -5,9 +19,10 @@
 ## Plan the Near Earth App:
 
 - Two entries (input or curtain of dates) for start and end.
+
 - Of each object that comes back from that time frame:
 
-* Name, Diameter, is it hazardous, sentry object?
+  - Name, Diameter, is it hazardous, sentry object
 
 - When the near earth object is clicked on, it should display its next 5 approaches and previous 5 approaches to earth
 
@@ -22,3 +37,7 @@
 - I targeted the data needed to display, I will work on how it looks once the its got the necessary functionality - Need to work on this :construction:
 
 - I have created another fetch request for a singular object, right now it returns the approach dates when clicked on the object
+
+- Worked on the style of the app
+
+- Stretch goals: calendar to select a range of maximum a week, tests, handling errors

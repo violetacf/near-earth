@@ -18,7 +18,7 @@ export default function GoToTop() {
   }
 
   return (
-    <a href="#top" name="targetDiv">
+    <a href="#top" name="top of the page">
       <button id="button-up" title="Go to top button">
         <img
           id="rocket"
