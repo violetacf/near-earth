@@ -1,7 +1,8 @@
 import './ObjectsDisplay.css';
 import { Link } from 'react-router-dom';
 import DangerOrSafe from './DangerOrSafe';
-import telescopeSearch from './../../Images/telescope-search.png';
+import Lottie from 'lottie-react';
+import telescopeSearch from './../../Images/telescope-animation.json';
 
 export default function ObjectsDisplay({
   loading,
@@ -12,16 +13,22 @@ export default function ObjectsDisplay({
     return (
       <div className="text-intro-click-more">
         {loading === true ? (
-          <>
-            <img
-              className="telescope-search"
-              src={telescopeSearch}
-              alt="telescope"
-            ></img>
-            <p className="loading-msg">
-              Grabbing the telescope, please wait...
-            </p>
-          </>
+          <div className="loading-search">
+            <div>
+              <p className="loading-msg">
+                Grabbing the telescope, please wait...
+              </p>
+            </div>
+            <div>
+              <Lottie
+                aria-label="telescope animation"
+                className="telescope-search"
+                animationData={telescopeSearch}
+                height={200}
+                width={200}
+              />
+            </div>
+          </div>
         ) : (
           <></>
         )}

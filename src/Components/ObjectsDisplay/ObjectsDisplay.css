@@ -41,10 +41,15 @@
   margin-top: 10pt;
 }
 
-.telescope-search {
-  width: 60pt;
-  margin-top: 20pt;
+.telescope-search svg {
+  max-width: 60%;
 }
+
+/* .loading-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+} */
 
 @media screen and (max-width: 992px) {
   .element-container {
@@ -63,7 +68,11 @@
     margin: 8pt;
   }
 
-  .telescope-search {
-    width: 40pt;
+  .telescope-search svg {
+    max-width: 90%;
   }
+
+  /* .telescope-search {
+    width: 40pt;
+  } */
 }
