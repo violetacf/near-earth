@@ -40,4 +40,6 @@
 
 - Worked on the style of the app
 
+- Accessibility google lighthouse
+
 - Stretch goals: calendar to select a range of maximum a week, tests, handling errors
