@@ -17,10 +17,6 @@ export default function Instructions() {
         You will only be able to select a range of a week. If you try to select
         more than a week*, you could be the next flying object around the Earth.
       </p>
-      <p className="asterisk-container">
-        *There is a small bug that we are working to fix. Until then we'll
-        accept it as a feature
-      </p>
     </div>
   );
 }

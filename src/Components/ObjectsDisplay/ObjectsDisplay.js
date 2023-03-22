@@ -12,7 +12,6 @@ export default function ObjectsDisplay({
     return (
       <div className="text-intro-click-more">
         {loading === true ? (
-          // See how to update loading message between searches:
           <>
             <img
               className="telescope-search"
@@ -30,9 +29,7 @@ export default function ObjectsDisplay({
     );
   } else {
     const array = Object.values(objectsReceived);
-    // console.log('objects received array', array);
     const newArray = array.flat();
-    // console.log('newArr', newArray);
     return (
       <div>
         <p className="text-intro-click-more">

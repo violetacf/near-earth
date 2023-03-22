@@ -23,6 +23,7 @@ export default function CloseUpElement() {
     firstObvs: '',
     lastObvs: '',
   });
+  
   const getElementById = async function () {
     const response = await fetch(
       `http://api.nasa.gov/neo/rest/v1/neo/${id}?api_key=${apiKey}`

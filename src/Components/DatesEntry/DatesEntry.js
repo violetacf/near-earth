@@ -9,7 +9,7 @@ export default function DatesEntry() {
   const [startDate, setStartDate] = useState(
     new Date().toISOString().split('T')[0]
   );
-  const [endDate, setEndDate] = useState(maxEndDate());
+  const [endDate, setEndDate] = useState(maxEndDate(startDate));
   const [numberOfElements, setNumberOfElements] = useState(0);
   const [objectsReceived, setObjectsReceived] = useState();
   const [loading, setLoading] = useState(false);
@@ -25,20 +25,32 @@ export default function DatesEntry() {
     setLoading(false);
   }
 
-  function onClick() {
-    // console.log('start date', startDate);
-    // console.log('end date', endDate);
+  function performSearch() {
     if (startDate !== '' && endDate !== '') {
       getData(startDate, endDate);
       setLoading(true);
+    } else {
+      alert('Dates are invalid');
     }
   }
 
-  function maxEndDate() {
+  function maxEndDate(startDate) {
     if (startDate === '') return '';
     var date = new Date(startDate);
     date.setDate(date.getDate() + 7);
     return date.toISOString().split('T')[0];
+  }
+
+  function isWithinRange(startDate, endDate) {
+    const date1 = new Date(startDate);
+    const date2 = new Date(endDate);
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    if (diffDays > 7) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   return (
@@ -52,7 +64,14 @@ export default function DatesEntry() {
                 value={startDate}
                 className="date-input"
                 type="date"
-                onChange={(event) => setStartDate(event.target.value)}
+                onChange={(event) => {
+                  let newStartDate = event.target.value;
+                  setStartDate(newStartDate);
+                  if (!isWithinRange(newStartDate, endDate)) {
+                    let newEndDate = maxEndDate(newStartDate);
+                    setEndDate(newEndDate);
+                  }
+                }}
                 required
               />
             </div>
@@ -67,7 +86,7 @@ export default function DatesEntry() {
                 className="date-input"
                 type="date"
                 min={startDate}
-                max={maxEndDate()}
+                max={maxEndDate(startDate)}
                 onChange={(event) => setEndDate(event.target.value)}
                 // TODO: if endDate is less than startDate move start Date 7 days before
                 // See if I can add a calendar like google flights with range
@@ -77,7 +96,7 @@ export default function DatesEntry() {
           </label>
         </div>
       </div>
-      <button id="submit-dates-button" onClick={onClick}>
+      <button id="submit-dates-button" onClick={performSearch}>
         <img id="telescope" src={telescope} alt="magnifying glass"></img>
         Find flying objects
       </button>
