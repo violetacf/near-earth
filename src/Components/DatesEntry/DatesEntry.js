@@ -13,6 +13,7 @@ export default function DatesEntry() {
   const [endDate, setEndDate] = useState(maxEndDate());
   const [numberOfElements, setNumberOfElements] = useState(0);
   const [objectsReceived, setObjectsReceived] = useState();
+  const [loading, setLoading] = useState(false);
 
   async function getData(startDate, endDate) {
     const response = await fetch(
@@ -23,6 +24,7 @@ export default function DatesEntry() {
     setNumberOfElements(data.element_count);
     setObjectsReceived(data.near_earth_objects);
     console.log('numberOfElements', numberOfElements);
+    setLoading(false);
   }
 
   function onClick() {
@@ -30,6 +32,7 @@ export default function DatesEntry() {
     console.log('end date', endDate);
     if (startDate !== '' && endDate !== '') {
       getData(startDate, endDate);
+      setLoading(true);
     }
   }
 
@@ -81,8 +84,7 @@ export default function DatesEntry() {
         Find flying objects
       </button>
       <ObjectsDisplay
-        startDate={startDate}
-        endDate={endDate}
+        loading={loading}
         objectsReceived={objectsReceived}
         numberOfElements={numberOfElements}
       />

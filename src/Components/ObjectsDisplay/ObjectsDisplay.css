@@ -36,6 +36,11 @@
   justify-content: space-around;
 }
 
+.loading-msg {
+  text-align: center;
+  margin-top: 10pt;
+}
+
 @media screen and (max-width: 992px) {
   .element-container {
     width: 90%;

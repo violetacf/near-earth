@@ -2,11 +2,20 @@ import './ObjectsDisplay.css';
 import { Link } from 'react-router-dom';
 import DangerOrSafe from './DangerOrSafe';
 
-export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
+export default function ObjectsDisplay({
+  loading,
+  objectsReceived,
+  numberOfElements,
+}) {
   if (numberOfElements === 0) {
     return (
       <div className="text-intro-click-more">
         <p>Here we will display the objects, click on them for more info.</p>
+        {loading === true ? (
+          <p className="loading-msg">Grabbing the telescope, please wait...</p>
+        ) : (
+          <></>
+        )}
       </div>
     );
   } else {
