@@ -1,4 +1,4 @@
-# How to run the app in you local machine
+# How to run the app in your local machine
 
 - You'll need an API key:
   Documentation is here: https://api.nasa.gov/ and you can get an API key from that page.

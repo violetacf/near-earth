@@ -15,6 +15,7 @@
   align-self: center;
   color: var(--mainColor);
 }
+
 .created-container a:hover {
   color: var(--secondaryColor);
 }
@@ -47,6 +48,7 @@
   .created-container p {
     font-size: 9pt;
   }
+
   .stars {
     display: none;
   }
