@@ -117,13 +117,13 @@ export default function CloseUpElement() {
             </div>
             <div className="dates-container">
               <div className="future-dates-container">
-                Next times this object will come close to Earth:
+                We're expecting to see this object close to earth on:
                 {futureFive.map((item, index) => (
                   <p key={index}>{formatDate(item)}</p>
                 ))}
               </div>
               <div className="past-dates-container">
-                Previous times this object had been close to Earth:
+                This object's been near earth before, on:
                 {previousFive.map((item, index) => (
                   <p key={index}>{formatDate(item)}</p>
                 ))}

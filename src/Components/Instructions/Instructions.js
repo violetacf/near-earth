@@ -7,9 +7,9 @@ export default function Instructions() {
       <p className="instructions-text-container">
         Ignore the dramatic title, <b>we already know that the end is near!!</b>
         <br />
-        Please, enter two dates below, and the floating bodies around the Earth
-        that were close to colliding with us between those dates will be
-        displayed.
+        Please enter two dates below. We'll show you all the floating bodies
+        that might be close to colliding with Earth between those dates and tell
+        you whether or not you should worry.
         <br />
         We hope you enjoy your stay and that you live each day like it is the
         last!

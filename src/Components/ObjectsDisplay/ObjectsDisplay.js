@@ -11,7 +11,6 @@ export default function ObjectsDisplay({
   if (numberOfElements === 0) {
     return (
       <div className="text-intro-click-more">
-        <p>Here we will display the objects, click on them for more info.</p>
         {loading === true ? (
           // See how to update loading message between searches:
           <>
@@ -37,7 +36,8 @@ export default function ObjectsDisplay({
     return (
       <div>
         <p className="text-intro-click-more">
-          Found {newArray.length} elements:
+          Found {newArray.length} elements, select an object to see more
+          information about it:
         </p>
 
         <div className="elements-container">
