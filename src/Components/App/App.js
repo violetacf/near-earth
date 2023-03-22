@@ -4,6 +4,7 @@ import Instructions from '../Instructions/Instructions';
 import DatesEntry from '../DatesEntry/DatesEntry';
 import GoToTop from '../GoToTop/GoToTop';
 import CloseUpElement from '../CloseUpElement/CloseUpElement';
+import CreatedBy from '../CreatedBy/CreatedBy';
 
 function App() {
   return (
@@ -18,12 +19,10 @@ function App() {
               </div>
             }
           />
-          <Route
-            path="/learn-more-element/:id"
-            element={<CloseUpElement />}
-          />
+          <Route path="/learn-more-element/:id" element={<CloseUpElement />} />
         </Routes>
         <GoToTop />
+        {/* <CreatedBy/> */}
       </BrowserRouter>
     </div>
   );

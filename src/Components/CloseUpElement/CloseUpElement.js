@@ -16,8 +16,8 @@ export default function CloseUpElement() {
   const [info, setInfo] = useState({
     name: '',
     url: '',
-    diameterMin: '',
-    diameterMax: '',
+    diameterMin: 0,
+    diameterMax: 0,
     dangerous: false,
     sentry: false,
     firstObvs: '',
@@ -133,7 +133,8 @@ export default function CloseUpElement() {
         </div>
         <div className="extra-info-container">
           <p>
-            Diameter between: {info.diameterMin} and {info.diameterMax} m.
+            Diameter between: {info.diameterMin.toFixed(2)} and{' '}
+            {info.diameterMax.toFixed(2)} m.
           </p>
           <p>First time it was seen: {info.firstObvs}</p>
           <p>Last time it was seen: {info.lastObvs}</p>
