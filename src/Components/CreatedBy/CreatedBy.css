@@ -1,21 +1,47 @@
 .created-container {
+  /* display: flex;
+  margin-top: 40px;
+  justify-content: center;
+  text-align: center; */
   position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
   text-align: center;
-  margin-bottom: 2pt;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  margin-top: 30pt;
+  display: flex;
+  justify-content: center;
 }
 
 .created-container a {
   text-decoration: none;
   font-size: 12pt;
+  align-self: center;
+  color: var(--mainColor);
+}
+.created-container a:hover {
+  color: var(--secondaryColor);
 }
 
 .created-container p {
   font-size: 12pt;
+  align-self: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.left-star {
+  transform: rotate(-180deg);
+}
+
+.right-star {
+  transform: rotate(90deg);
+}
+
+.stars {
+  width: 25pt;
+  height: 100%;
+  align-self: center;
 }
 
 @media screen and (max-width: 992px) {

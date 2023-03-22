@@ -22,7 +22,7 @@ function App() {
           <Route path="/learn-more-element/:id" element={<CloseUpElement />} />
         </Routes>
         <GoToTop />
-        {/* <CreatedBy/> */}
+        <CreatedBy />
       </BrowserRouter>
     </div>
   );
