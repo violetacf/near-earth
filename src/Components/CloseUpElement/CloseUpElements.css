@@ -83,11 +83,21 @@
     width: 80%;
     margin: 10pt;
   }
+
+  .back-more:active {
+    background-color: var(--main-light-color);
+  }
+
+  .back-more:hover {
+    background-color: var(--white);
+  }
+
   .detailed-info-container {
     margin: 10pt;
     flex-direction: column;
     gap: 20pt;
   }
+
   .title-image-container img {
     max-width: 100%;
     margin-top: 10pt;
@@ -96,9 +106,11 @@
   .future-dates-container {
     font-size: 10pt;
   }
+
   .past-dates-container {
     font-size: 10pt;
   }
+
   .dates-container {
     gap: 20pt;
   }

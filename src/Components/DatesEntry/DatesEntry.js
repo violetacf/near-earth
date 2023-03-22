@@ -28,9 +28,9 @@ export default function DatesEntry() {
   function onClick() {
     console.log('start date', startDate);
     console.log('end date', endDate);
-    // if (startDate !== '' && endDate !== '') {
-    getData(startDate, endDate);
-    // }
+    if (startDate !== '' && endDate !== '') {
+      getData(startDate, endDate);
+    }
   }
 
   function maxEndDate() {
@@ -48,7 +48,7 @@ export default function DatesEntry() {
             Enter start date:
             <div className="input-box">
               <input
-                // value={startDate}
+                value={startDate}
                 className="date-input"
                 type="date"
                 onChange={(event) => setStartDate(event.target.value)}
@@ -62,7 +62,7 @@ export default function DatesEntry() {
             and end date:
             <div className="input-box">
               <input
-                // value={endDate}
+                value={endDate}
                 className="date-input"
                 type="date"
                 min={startDate}

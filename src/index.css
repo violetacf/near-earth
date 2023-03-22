@@ -41,6 +41,7 @@ section {
     transform: scale(1.2);
   }
 }
+
 #stars span {
   /* position: absolute; */
   position: fixed;
@@ -65,6 +66,7 @@ section {
   height: 1px;
   background: linear-gradient(90deg, #fff, transparent);
 }
+
 @keyframes animate {
   0% {
     transform: rotate(315deg) translateX(0);
@@ -78,6 +80,7 @@ section {
     opacity: 0;
   }
 }
+
 #stars span:nth-child(1) {
   top: 0;
   right: 0;

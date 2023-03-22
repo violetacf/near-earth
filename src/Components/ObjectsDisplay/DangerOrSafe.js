@@ -1,6 +1,7 @@
 import './ObjectsDisplay.css';
 import dangerousPic from './../../Images/save-me.png';
 import safePic from './../../Images/safe.png';
+
 export default function DangerOrSafe({ dangerous }) {
   return (
     <div>

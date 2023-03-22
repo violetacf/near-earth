@@ -52,13 +52,9 @@ export default function ObjectsDisplay({ objectsReceived, numberOfElements }) {
                     {' '}
                     This element is{' '}
                     {element.is_potentially_hazardous_asteroid ? (
-                      <>
-                        <b>dangerous!!</b>
-                      </>
+                      <b>dangerous!!</b>
                     ) : (
-                      <>
-                        <b>not dangerous.</b>
-                      </>
+                      <b>not dangerous.</b>
                     )}
                   </p>
                   <p>

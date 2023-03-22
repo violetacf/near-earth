@@ -110,7 +110,6 @@ export default function CloseUpElement() {
               Read more in the NASA website
             </button>
           </div>
-
           <div className="detailed-info-container">
             <div className="title-image-container">
               <h1>Object Name: {info.name}</h1>
@@ -118,7 +117,6 @@ export default function CloseUpElement() {
             </div>
             <div className="dates-container">
               <div className="future-dates-container">
-                {' '}
                 Next times this object will come close to Earth:
                 {futureFive.map((item, index) => (
                   <p key={index}>{formatDate(item)}</p>

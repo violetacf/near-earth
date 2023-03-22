@@ -50,6 +50,15 @@ See how to make the cursor pointer for the little calendar
     font-size: 15pt;
     margin-top: 15pt;
   }
+
+  #submit-dates-button:active {
+    background-color: var(--main-light-color);
+  }
+
+  #submit-dates-button:hover {
+    background-color: var(--white);
+  }
+
   .date-label {
     font-size: 15pt;
   }

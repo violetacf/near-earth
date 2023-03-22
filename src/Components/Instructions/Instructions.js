@@ -3,9 +3,7 @@ import './Instructions.css';
 export default function Instructions() {
   return (
     <div className="instructions-container">
-      <h1 className="title-container" id="title-container">
-        Is the end near?
-      </h1>
+      <h1 className="title-container">Is the end near?</h1>
       <p className="instructions-text-container">
         Ignore the dramatic title, <b>we already know that the end is near!!</b>
         <br />

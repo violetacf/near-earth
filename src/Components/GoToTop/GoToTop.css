@@ -35,6 +35,10 @@
     background-color: var(--main-light-color);
   }
 
+  #button-up:hover {
+    background-color: var(--white);
+  }
+
   #rocket {
     max-width: 20pt;
   }
