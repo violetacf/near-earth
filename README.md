@@ -34,7 +34,7 @@
 
 - When looking at data by doing request in postman it only allows the time frame to be a maximum of 7 days. - Need to work on this :construction: I thought I will take a look to see if I can have a calendar with a range of dates
 
-- I targeted the data needed to display, I will work on how it looks once the its got the necessary functionality - Need to work on this :construction:
+- I targeted the data needed to display, I will work on how it looks once the its got the necessary functionality
 
 - I have created another fetch request for a singular object, right now it returns the approach dates when clicked on the object
 
@@ -42,4 +42,4 @@
 
 - Accessibility google lighthouse
 
-- Stretch goals: calendar to select a range of maximum a week, tests, handling errors
+- Stretch goals: calendar to select a range of maximum a week, tests, handling errors, authentication and authorisation for user to have a list of favourite stellar bodies
