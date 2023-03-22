@@ -24,8 +24,6 @@ export default function ObjectsDisplay({
                 aria-label="telescope animation"
                 className="telescope-search"
                 animationData={telescopeSearch}
-                height={200}
-                width={200}
               />
             </div>
           </div>
