@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import meteor from './../../Images/meteor.png';
 import dangerousPic from './../../Images/save-me.png';
 import safePic from './../../Images/safe.png';
-const apiKey = 'k4vS6xdND0EMCJtWR1o1rY6LcyyV4j90mLHDkfKp';
-// const apiKey = process.env.REACT_APP_API_KEY;
+
+const apiKey = process.env.REACT_APP_API_KEY;
 
 let approachesArray = [];
 let previousFive = [];

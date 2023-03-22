@@ -3,8 +3,7 @@ import { useState } from 'react';
 import ObjectsDisplay from '../ObjectsDisplay/ObjectsDisplay';
 import telescope from './../../Images/telescope.png';
 
-const apiKey = 'k4vS6xdND0EMCJtWR1o1rY6LcyyV4j90mLHDkfKp';
-// const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey = process.env.REACT_APP_API_KEY;
 
 export default function DatesEntry() {
   const [startDate, setStartDate] = useState(
