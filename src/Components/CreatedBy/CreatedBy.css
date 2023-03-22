@@ -11,6 +11,7 @@
   margin-top: 30pt;
   display: flex;
   justify-content: center;
+  margin-bottom: 2pt;
 }
 
 .created-container a {
