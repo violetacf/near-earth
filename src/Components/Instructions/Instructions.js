@@ -15,7 +15,7 @@ export default function Instructions() {
         last!
         <br />
         You will only be able to select a range of a week. If you try to select
-        more than a week*, you could be the next flying object around the Earth.
+        more than a week, you could be the next flying object around the Earth.
       </p>
     </div>
   );
